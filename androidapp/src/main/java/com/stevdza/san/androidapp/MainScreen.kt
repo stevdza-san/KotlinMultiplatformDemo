@@ -49,7 +49,7 @@ fun MainScreen() {
             onClick = {
                 scope.launch {
                     val apiResponse = fetchData(
-                        count = if(value.isNumeric()) value.toInt() else 0
+                        count = if (value.isNumeric()) value.toInt() else 0
                     )
                     apiResponseText = apiResponse.parseAsString()
                 }
@@ -65,6 +65,10 @@ fun String.isNumeric(): Boolean {
 }
 
 private suspend fun fetchData(count: Int): ApiResponse {
-    val apiService = RetrofitClient.apiService
-    return apiService.getResponse(count = count)
+    return try {
+        val apiService = RetrofitClient.apiService
+        apiService.getPeople(count = count)
+    } catch (e: Exception) {
+        ApiResponse.Error(errorMessage = e.message.toString())
+    }
 }

@@ -11,7 +11,7 @@ import retrofit2.http.Query
 
 interface ApiService {
     @GET("api/getpeople")
-    suspend fun getResponse(@Query("count") count: Int): ApiResponse
+    suspend fun getPeople(@Query("count") count: Int): ApiResponse
 }
 
 object RetrofitClient {
