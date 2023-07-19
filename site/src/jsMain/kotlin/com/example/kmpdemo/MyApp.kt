@@ -1,4 +1,4 @@
-package com.example.KMPDemo
+package com.example.kmpdemo
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.modifiers.*

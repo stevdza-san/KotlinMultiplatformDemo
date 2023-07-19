@@ -9,3 +9,4 @@ pluginManagement {
 rootProject.name = "KMPDemo"
 
 include(":site")
+include(":common")
