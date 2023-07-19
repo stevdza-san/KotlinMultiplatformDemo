@@ -1,0 +1,14 @@
+site:
+  title: "KotlinMultiplatformDemo"
+
+server:
+  files:
+    dev:
+      contentRoot: "build/processedResources/js/main/public"
+      script: "build/developmentExecutable/KMPDemo.js"
+      api: "build/libs/KMPDemo.jar"
+    prod:
+      script: "build/distributions/KMPDemo.js"
+      siteRoot: ".kobweb/site"
+
+  port: 8080
