@@ -90,8 +90,12 @@ fun HomePage() {
 }
 
 private suspend fun fetchData(): ApiResponse {
-    val inputText = (document.getElementById("countInput") as HTMLInputElement).value
-    val number = if(inputText.isEmpty()) 0 else inputText.toInt()
-    val result = window.api.tryGet(apiPath = "getpeople?count=$number")?.decodeToString()
-    return Json.decodeFromString(result.toString())
+    return try {
+        val inputText = (document.getElementById("countInput") as HTMLInputElement).value
+        val number = if (inputText.isEmpty()) 0 else inputText.toInt()
+        val result = window.api.tryGet(apiPath = "getpeople?count=$number")?.decodeToString()
+        Json.decodeFromString(result.toString())
+    } catch (e: Exception) {
+        return ApiResponse.Error(errorMessage = e.message.toString())
+    }
 }
